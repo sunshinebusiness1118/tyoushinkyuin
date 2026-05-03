@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>趙 鍼灸院</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-50:  #e1f5ee;
+      --green-100: #9fe1cb;
+      --green-500: #1d9e75;
+      --green-700: #0f6e56;
+      --green-900: #085041;
+      --amber-100: #faeeda;
+      --color-bg:           #ffffff;
+      --color-bg-secondary: #f7f6f3;
+      --color-text-primary: #1a1a1a;
+      --color-text-secondary: #555550;
+      --color-text-tertiary: #999990;
+      --color-border: #e8e6e0;
+      --color-border-mid: #d0cec8;
+      --font-sans: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 20px;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-bg);
+      color: var(--color-text-primary);
+      line-height: 1.7;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .site { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    /* ── Nav ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1.5rem;
+      border-bottom: 0.5px solid var(--color-border);
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 12px;
+      /* background:  #5dcaa5; */
+    }
+    .logo { font-size: 18px; font-weight: 500; color: var(--green-900); }
+    .logo span { font-size: 12px; color: var(--green-700); display: block; font-weight: 400; margin-top: 1px; }
+    .nav-links { display: flex; gap: 22px; flex-wrap: wrap; }
+    .nav-links a { font-size: 13px; color: var(--color-text-secondary); }
+    .nav-links a:hover { color: var(--green-500); }
+    .nav-links a.cta { color: var(--green-500); font-weight: 500; }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(160deg, var(--green-50) 0%, #f1efe8 60%, var(--amber-100) 100%);
+      padding: 64px 32px 56px;
+      text-align: center;
+      border-radius: var(--radius-lg);
+      margin-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--green-100);
+      color: var(--green-900);
+      font-size: 12px;
+      padding: 4px 16px;
+      border-radius: 20px;
+      margin-bottom: 18px;
+      letter-spacing: 0.05em;
+    }
+    .hero h1 {
+      font-size: 30px;
+      font-weight: 500;
+      color: var(--green-900);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+    .hero-desc {
+      font-size: 15px;
+      color: var(--green-700);
+      margin-bottom: 32px;
+      line-height: 1.8;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--green-500);
+      color: #fff;
+      border: none;
+      padding: 12px 32px;
+      border-radius: 30px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-right: 10px;
+      font-family: var(--font-sans);
+    }
+    .btn-primary:hover { background: var(--green-700); }
+    .btn-outline {
+      display: inline-block;
+      background: transparent;
+      color: var(--green-500);
+      border: 1.5px solid var(--green-500);
+      padding: 11px 28px;
+      border-radius: 30px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: var(--font-sans);
+    }
+    .btn-outline:hover { background: var(--green-50); }
+
+    /* ── Section ── */
+    .section { margin-bottom: 3.5rem; }
+    .sec-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--green-500);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .sec-title {
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--color-text-primary);
+      margin-bottom: 24px;
+    }
+
+    /* ── Menu ── */
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; }
+    .menu-card {
+      background: var(--color-bg);
+      border: 0.5px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      position: relative;
+    }
+    .menu-card.popular { border: 1.5px solid var(--green-500); }
+    .popular-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--green-500);
+      color: #fff;
+      font-size: 10px;
+      padding: 3px 14px;
+      border-radius: 10px;
+      white-space: nowrap;
+    }
+    .menu-icon {
+      width: 38px; height: 38px;
+      background: var(--green-50);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 12px;
+      font-size: 18px;
+    }
+    .menu-name { font-size: 14px; font-weight: 500; margin-bottom: 5px; }
+    .menu-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; margin-bottom: 10px; }
+    .menu-time { font-size: 11px; color: var(--green-700); margin-bottom: 6px; }
+    .menu-price { font-size: 20px; font-weight: 500; color: var(--green-900); }
+    .menu-price span { font-size: 12px; font-weight: 400; color: var(--color-text-secondary); }
+
+    /* ── Profile ── */
+    .profile-card {
+      background: var(--color-bg);
+      border: 0.5px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      display: flex;
+      gap: 22px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+    .avatar {
+      width: 84px; height: 84px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--green-100), #5dcaa5);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 30px; flex-shrink: 0;
+    }
+    .profile-info h3 { font-size: 18px; font-weight: 500; margin-bottom: 2px; }
+    .profile-role { font-size: 13px; color: var(--green-500); margin-bottom: 12px; }
+    .profile-bio { font-size: 14px; color: var(--color-text-secondary); line-height: 1.8; margin-bottom: 14px; }
+    .license-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag {
+      background: var(--green-50);
+      color: var(--green-900);
+      font-size: 11px;
+      padding: 3px 12px;
+      border-radius: 12px;
+    }
+
+    /* ── Voices ── */
+    .voices-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+    .voice-card {
+      background: var(--color-bg-secondary);
+      border-radius: var(--radius-lg);
+      padding: 1.1rem 1.25rem;
+    }
+    .stars { color: #ef9f27; font-size: 13px; margin-bottom: 7px; }
+    .voice-text { font-size: 13px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 10px; }
+    .voice-author { font-size: 12px; font-weight: 500; }
+
+    /* ── Access ── */
+    .access-card {
+      background: var(--color-bg);
+      border: 0.5px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+    }
+    .access-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 520px) { .access-grid { grid-template-columns: 1fr; } }
+    .access-info dt { font-size: 12px; color: var(--color-text-tertiary); margin-bottom: 2px; margin-top: 14px; }
+    .access-info dt:first-child { margin-top: 0; }
+    .access-info dd { font-size: 14px; color: var(--color-text-primary); line-height: 1.6; }
+    .map-placeholder {
+      background: var(--green-50);
+      border-radius: var(--radius-md);
+      min-height: 160px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 8px;
+    }
+    .map-icon { font-size: 30px; }
+    .map-text { font-size: 12px; color: var(--green-700); }
+
+    /* ── CTA ── */
+    .cta-block {
+      text-align: center;
+      padding: 2.5rem 2rem;
+      background: var(--color-bg-secondary);
+      border-radius: var(--radius-lg);
+      margin-bottom: 3rem;
+    }
+    .cta-block .sec-label { text-align: center; }
+    .cta-title { font-size: 22px; font-weight: 500; margin-bottom: 10px; }
+    .cta-sub { font-size: 14px; color: var(--color-text-secondary); margin-bottom: 24px; line-height: 1.7; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 0.5px solid var(--color-border);
+      padding-top: 1.5rem;
+      text-align: center;
+      font-size: 12px;
+      color: var(--color-text-tertiary);
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 48px 20px 40px; }
+      .hero h1 { font-size: 24px; }
+      .btn-primary, .btn-outline { display: block; width: 100%; margin: 6px 0; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+<div class="site">
+
+  <!-- Navigation -->
+  <nav>
+    <div>
+      <div class="logo">
+        趙　鍼灸院
+        <span>Tyou Acupuncture</span>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#menu">施術メニュー</a>
+      <a href="#profile">院長プロフィール</a>
+      <a href="#voices">お客様の声</a>
+      <a href="#access">アクセス</a>
+      <a href="#contact" class="cta">ご予約</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-badge">自然治癒力を高める</div>
+    <h1>心と体を、丁寧に整える<br>鍼灸治療院</h1>
+    <p class="hero-desc">
+      東洋医学の知恵と現代の技術を融合し、<br>
+      あなた本来の「ととのう」をサポートします。
+    </p>
+    <a class="btn-primary" href="#contact">初回カウンセリング予約</a>
+    <a class="btn-outline" href="#menu">施術メニューを見る</a>
+  </div>
+
+  <!-- Menu -->
+  <div class="section" id="menu">
+    <div class="sec-label">施術メニュー・料金</div>
+    <!-- <div class="sec-title">あなたに合ったメニューを</div> -->
+    <div class="menu-grid">
+      <div class="menu-card popular">
+        <!-- <div class="popular-badge">人気 No.1</div> -->
+        <div class="menu-icon">✦</div>
+        <div class="menu-name">■ 当院の鍼治療は、全身と患部両方の調和を目的とした治療法です。</div>
+        <div class="menu-desc">■ 自然治癒力が全身と患部を調和する効果を出せるように治療します。</div>
+        <div class="menu-desc">■ 全身の変化を読み取る総合分析から個人の体質や特徴をとらえ治療します。</div>
+        <div class="menu-time">40〜60分</div>
+        <div class="menu-price">¥8,000 <span>（初回）</span></div>
+      </div>
+      <div class="menu-card">
+        <img src="futari5.png">
+        <!-- <div class="menu-icon">◈</div>
+        <div class="menu-name">肩こり・首こり集中</div>
+        <div class="menu-desc">デスクワークの疲れに特化した施術</div>
+        <div class="menu-time">45分</div>
+        <div class="menu-price">¥6,500</div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-icon">◉</div>
+        <div class="menu-name">美容鍼</div>
+        <div class="menu-desc">顔のリフトアップ・ハリ改善に</div>
+        <div class="menu-time">60分</div>
+        <div class="menu-price">¥10,000</div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-icon">◎</div>
+        <div class="menu-name">女性の不調ケア</div>
+        <div class="menu-desc">冷え・生理痛・更年期など</div>
+        <div class="menu-time">60分</div>
+        <div class="menu-price">¥8,500</div>
+      </div> -->
+    </div>
+  </div>
+
+  <!-- Profile -->
+  <div class="section" id="profile">
+    <div class="sec-label">院長プロフィール</div>
+    <div class="sec-title">担当者のご紹介</div>
+    <div class="profile-card">
+      <div class="avatar">🌿</div>
+      <div class="profile-info">
+        <h3>趙　吉昌</h3>
+        <p class="profile-role">院長・中医師・鍼灸師</p>
+        <p class="profile-bio">
+          中国から日本にやってきて40年あまりになりました。 この間、中医学(中国医学)を基盤にして西洋医学、日本の東洋医学の視点から研究を積み臨床を重ねてきたことで、鍼灸がどんな症状に対しても効果があることが解りました。 患者さんの良くなっていかれる笑顔が私の最大の喜びです。
+        </p>
+        <div class="license-tags">
+          <span class="tag">鍼師・灸師免許</span>
+          <span class="tag">中医学研修修了</span>
+        </div>
+      </div>
+    </div>
+        <div class="profile-card">
+      <div class="avatar"><img src="syouko3.JPG"></div>
+      <div class="profile-info">
+        <h3>櫛橋　祥子</h3>
+        <p class="profile-role">鍼灸師</p>
+        <p class="profile-bio">
+          私は幼い頃から、現代医学では治らないとされた病気が、父の鍼治療によって改善していく姿を見て育ちました。痛みに苦しんでいた患者様が、治療を重ねるごとに笑顔を取り戻していく。その光景は、今でも私の原動力となっています。
+          「目の前の患者様を救いたい」という一心で鍼灸師の道を選び、父のもとで臨床経験を積み上げて、気づけば20年が経ちました。
+
+          私たちが大切にしていること
+          父は40年以上の臨床の中で、一貫して「鍼のみ」を使った治療にこだわってきました。
+          なぜなら、同じ病名や症状であっても、体質や原因は一人ひとり全く異なるからです。その細やかな違いにアプローチし、オーダーメイドの施術ができるのは鍼治療だけだと確信しているからです。
+
+          鍼治療は「病気」そのものを診るのではなく、『その人自身の身体』を治療します。少しずつ症状が和らぐことで生活が楽になり、それが患者様の『笑顔』と『自信』に繋がっていくのです。
+
+          これからの決意
+          これまで父の1番近くで、癌や筋腫、クローン病、全身性エリテマトーデス、メニエール病、リウマチ、ヘルニアなど、実に様々な難病・持病を抱えた患者様が快方に向かう姿を見てきました。
+          そんな偉大な父も70代となり、いつ引退してもおかしくない年齢を迎えました。
+          私は、父が培ってきたこの尊い技術と、患者様に対する想いをしっかりと受け継ぎました。
+          これからも、病に悩む一人でも多くの患者様を治癒に導けるよう、日々邁進してまいります。どうぞ安心してお身体のお悩みをご相談ください。
+        </p>
+        <div class="license-tags">
+          <span class="tag">鍼師・灸師免許</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Voices -->
+  <div class="section" id="voices">
+    <div class="sec-label">お客様の声</div>
+    <div class="sec-title">ご来院されたみなさまより</div>
+    <div class="voices-grid">
+      <div class="voice-card">
+        <div class="stars">★★★★★</div>
+        <p class="voice-text">重症筋無力症に悩まされていたが、
+          5年という歳月をかけ、じっくりと根本から体質を改善されて、今現在、瞼（まぶた）の筋力が戻り、その他の辛い症状も軽減していきました。針治療の力が本当にすごい！</p>
+        <p class="voice-author">40代・会社員</p>
+      </div>
+      <div class="voice-card">
+        <div class="stars">★★★★★</div>
+        <p class="voice-text">美容鍼を体験しました。翌日から顔のむくみがスッキリ！継続して通いたいと思っています。</p>
+        <p class="voice-author">30代・主婦</p>
+      </div>
+      <div class="voice-card">
+        <div class="stars">★★★★☆</div>
+        <p class="voice-text">インフルエンザの投薬後に低体温症になってしまったが、
+          わずか1回の鍼治療で平熱に戻りました。本当にありがとうございました。</p>
+        <p class="voice-author">50代・女性</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Access -->
+  <div class="section" id="access">
+    <div class="sec-label">アクセス・地図</div>
+    <div class="sec-title">ご来院方法</div>
+    <div class="access-card">
+      <div class="access-grid">
+        <dl class="access-info">
+          <dt>院名</dt>
+          <dd>趙　鍼灸院</dd>
+          <dt>住所</dt>
+          <dd>〒659-0051<br>兵庫県芦屋市呉川町5-12-201 <br>※エレベータあり</dd>
+          <dt>電話</dt>
+          <dd>0797-38-0190</dd>
+          <dt>診療時間</dt>
+          <dd>月〜土　9:00 〜 17:00<br>（日・祝 休診）</dd>
+          <dt>最寄り駅</dt>
+          <dd>阪神芦屋駅、打出駅　各線より徒歩10分　<br>※JR芦屋駅より徒歩15分</dd>
+        </dl>
+        <div class="map-placeholder">
+          <!-- Google Maps埋め込みはここに差し替えてください -->
+          <iframe src="" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"></iframe>
+          <div class="map-icon">📍</div>
+          <div class="map-text">地図を埋め込む（Google Maps）</div>
+        </div>
+
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA / Contact -->
+  <div class="cta-block" id="contact">
+    <div class="sec-label">ご予約・お問い合わせ</div>
+    <div class="cta-title">まずはお気軽にご相談ください</div>
+    <p class="cta-sub">初回のカウンセリングは無料です。<br>どんな小さなお悩みもお聞きします。</p>
+    <a class="btn-primary" href="tel:0797380190">お電話でのご予約</a>
+    <a class="btn-outline" href="mailto:info@midorinokaze.jp">メールでのお問い合わせ</a>
+  </div>
+
+  <footer>
+    &copy; 2026 趙 鍼灸院　All rights reserved.
+  </footer>
+
+</div>
+</body>
+</html>
