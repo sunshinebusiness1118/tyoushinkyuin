@@ -365,6 +365,41 @@
       .hero h1 { font-size: 24px; }
       .btn-primary, .btn-outline { display: block; width: 100%; margin: 6px 0; text-align: center; }
     }
+
+    /* ── Back to Top ── */
+    #back-to-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 46px;
+      height: 46px;
+      background: var(--green-500);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 14px rgba(29, 158, 117, 0.35);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease, background 0.2s ease;
+      z-index: 999;
+    }
+    #back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    #back-to-top:hover {
+      background: var(--green-700);
+    }
+    @media (max-width: 600px) {
+      #back-to-top { bottom: 20px; right: 20px; width: 40px; height: 40px; font-size: 17px; }
+    }
   </style>
 </head>
 <body>
@@ -581,5 +616,22 @@
   </footer>
 
 </div>
+
+<!-- Back to Top Button -->
+<button id="back-to-top" aria-label="ページトップへ戻る" title="ページトップへ戻る">&#8679;</button>
+
+<script>
+  const btn = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  });
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
 </body>
 </html>
