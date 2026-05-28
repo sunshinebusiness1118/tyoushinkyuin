@@ -48,7 +48,17 @@
       margin-bottom: 2rem;
       flex-wrap: wrap;
       gap: 12px;
-      /* background:  #5dcaa5; */
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 100;
+      margin-left: -1.5rem;
+      margin-right: -1.5rem;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      padding-top: 1rem;
     }
     .logo { font-size: 18px; font-weight: 500; color: var(--green-900); }
     .logo span { font-size: 12px; color: var(--green-700); display: block; font-weight: 400; margin-top: 1px; }
@@ -416,7 +426,7 @@
     <div class="nav-links">
       <a href="#menu">施術メニュー</a>
       <a href="#profile">院長プロフィール</a>
-      <a href="#voices">お客様の声</a>
+      <a href="#voices">当院について</a>
       <a href="#access">アクセス</a>
       <a href="#contact" class="cta">ご予約</a>
     </div>
